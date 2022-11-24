@@ -2,10 +2,9 @@ input.onGesture(Gesture.Shake, function () {
     saltos += 1
     time = input.runningTime()
     saltosSegundos = time / 1000
-    serial.writeValue("y", saltos)
-    serial.writeValue("x", saltosSegundos)
     radio.sendValue("saltos", saltos)
     radio.sendValue("segundos", saltosSegundos)
+    serial.writeLine("" + saltos + ";" + saltosSegundos)
 })
 function convertirPulso () {
     if (ecg >= 800 && contadorPulso == 0) {
@@ -39,11 +38,10 @@ contadorPulso = 0
 basic.forever(function () {
     ecg = pins.analogReadPin(AnalogPin.P2)
     ecgSegundos = input.runningTime() / 1000
-    serial.writeValue("ecg", ecg)
-    serial.writeValue("ecgSegundos", ecgSegundos)
     convertirPulso()
-    serial.writeValue("pulsoMinuto", pulsoFinal)
     radio.sendValue("ecg", ecg)
     radio.sendValue("ecgSegundos", ecgSegundos)
     radio.sendValue("pulsoMinuto", pulsoFinal)
+    serial.writeLine("ecg:" + ecg + "Segundos:" + ecgSegundos + "Pulso:" + pulsoFinal)
+    basic.showString("" + pulsoFinal + images.iconImage(IconNames.Heart))
 })
