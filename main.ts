@@ -43,5 +43,6 @@ basic.forever(function () {
     radio.sendValue("ecgSegundos", ecgSegundos)
     radio.sendValue("pulsoMinuto", pulsoFinal)
     serial.writeLine("ecg:" + ecg + "Segundos:" + ecgSegundos + "Pulso:" + pulsoFinal)
-    basic.showString("" + pulsoFinal + images.iconImage(IconNames.Heart))
+    basic.showString("" + (pulsoFinal))
+    basic.showIcon(IconNames.Heart)
 })
