@@ -29,7 +29,7 @@ let saltosSegundos = 0
 let saltos = 0
 let ecg = 0
 basic.showIcon(IconNames.Yes)
-radio.setGroup(42)
+radio.setGroup(128)
 ecg = 0
 saltos = 0
 saltosSegundos = 0
